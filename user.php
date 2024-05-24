@@ -22,5 +22,20 @@ Class user {
     return $rows;
   }
 
+  public function check_user_exists ($username) {
+    $db = db_connect();
+    $statement = $db->prepare("SELECT * FROM users WHERE username = :username");
+    $statement->bindParam(':username', $username);
+    $statement->execute();
+    $rows = $statement->fetch(PDO::FETCH_ASSOC);
+
+    if (isset($rows['username'])) {
+      return true;
+    } else {
+      return false;
+    }
+  
+  }
+
   
 }

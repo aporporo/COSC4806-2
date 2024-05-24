@@ -7,18 +7,16 @@
   $_SESSION['username'] = $username;
   $password = $_REQUEST['password'];
   $password2 = $_REQUEST['password2'];
+  $user = new User();
 
-  if ($valid_username == $username && $valid_password == $password) {
-    $_SESSION['authenticated'] = 1;
-    header ('location: /');
+  //check username exists in database
+  if ($user->check_user_exists($username)) {
+    echo "Username already exists";
+    header ('location: /signup.php');
   } else {
-    if (!isset($_SESSION['login_attempts'])){
-      $_SESSION['login_attempts'] = 1;
-    } else {
-      $_SESSION['login_attempts']++;
-    }
+    $user->create_user($username, $password);
+    echo "User created";
     header ('location: /login.php');
-
   }
 
 ?>
