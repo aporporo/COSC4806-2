@@ -10,19 +10,22 @@
 
 <html>
   <head>
-    <title>Login</title>
+    <title>Signup</title>
   </head>
   <body>
-    <h1>Login form</h1>
+    <h1>Register an account</h1>
     <form action="/validate.php" method="post">
       <label for="username">Username:</label>
       <input type="text" name="username" id="username"/></br></br>
       <label for="password">Password:</label>
       <input type="password" name="password" id="password"/></br></br>
-      <input type="submit" name="btnLogin" value="Login"/></br></br>
+      <label for="password">Confirm Password:</label>
+      <input type="password" name="password" id="password"/></br></br>
+      <input type="submit" name="btnLogin" value="Register"/></br></br>
 
     </form>
-    <p><a href="/signup.php">Register</p>
+    <p><a href="/login.php">Login</p>
+
 
 
   </body>
