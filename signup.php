@@ -14,7 +14,7 @@
   </head>
   <body>
     <h1>Register an account</h1>
-    <form action="/validate.php" method="post">
+    <form action="/validateSignup.php" method="post">
       <label for="username">Username:</label>
       <input type="text" name="username" id="username"/></br></br>
       <label for="password">Password:</label>
