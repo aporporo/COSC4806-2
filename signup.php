@@ -1,6 +1,11 @@
 <?php
   session_start();
 
+//if logged in, redirect to index
+if (isset($_SESSION['authenticated']) == 1) {
+  header('location: /');
+}
+
 //error message for already existing username
   if (isset($_SESSION['username_error']) ) {
     echo "Username already exists";

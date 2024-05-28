@@ -1,6 +1,11 @@
 <?php
   session_start();
 
+  //if logged in, redirect to index
+  if (isset($_SESSION['authenticated']) == 1) {
+    header('location: /');
+  }
+
   if (isset($_SESSION['login_attempts'])) {
     echo "Unsuccessful attempt: " . $_SESSION['login_attempts'];
   } else {

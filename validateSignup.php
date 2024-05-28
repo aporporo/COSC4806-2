@@ -2,6 +2,12 @@
 
   require_once ('user.php');
   session_start();
+
+//if logged in, redirect to index
+if (isset($_SESSION['authenticated']) == 1) {
+  header('location: /');
+  die;
+}
   session_unset();
   
   $username = $_REQUEST['username'];
