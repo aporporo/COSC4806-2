@@ -15,7 +15,8 @@ Class user {
 
   public function create_user ($username, $password) {
     $db = db_connect();
-    $statement = $db->prepare("INSERT INTO users (username, password) VALUES ('$username', '$password')");
+    $hash = password_hash($password, PASSWORD_DEFAULT);
+    $statement = $db->prepare("INSERT INTO users (username, password) VALUES ('$username', '$hash')");
 
     $statement->execute();
     
