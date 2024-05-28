@@ -1,15 +1,13 @@
 <?php
-
+  require_once ('user.php');
   session_start();
-
-  $valid_username = "alex";
-  $valid_password = "alex123";
 
   $username = $_REQUEST['username'];
   $_SESSION['username'] = $username;
   $password = $_REQUEST['password'];
+  $user = new User();
 
-  if ($valid_username == $username && $valid_password == $password) {
+  if ($user->check_username_password($username, $password)) {
     $_SESSION['authenticated'] = 1;
     header ('location: /');
   } else {

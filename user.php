@@ -38,5 +38,25 @@ Class user {
   
   }
 
+  public function check_username_password ($username, $password) {
+    $db = db_connect();
+    
+    $statement = $db->prepare("SELECT * FROM users WHERE username = '$username'");
+    
+    $statement->execute();
+    $rows = $statement->fetch(PDO::FETCH_ASSOC);
+
+    if (isset($rows['username'])) {
+      $hash = $rows['password'];
+      if (password_verify($password, $hash)) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+
   
 }
