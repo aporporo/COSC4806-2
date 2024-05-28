@@ -5,13 +5,6 @@ if (isset($_SESSION['authenticated']) != 1) {
   header('location: /login.php');
 }
 
-require_once ('user.php');
-
-$user = new user();
-$user_list = $user->get_all_users();
-
-print_r ($user_list);
-
 ?>
 
 <html>
@@ -26,10 +19,6 @@ print_r ($user_list);
     <?php echo "Today is " . date("Y/m/d") . "<br>"; ?>
     <p><a href="/logout.php">Click here to logout</a></p>
 
-
-
-
   </body>
-
 
 </html>

@@ -7,9 +7,11 @@
   $password = $_REQUEST['password'];
   $user = new User();
 
+  //check username and password exists in database
   if ($user->check_username_password($username, $password)) {
     $_SESSION['authenticated'] = 1;
     header ('location: /');
+    //if username and password do not exist, increment login attempts
   } else {
     if (!isset($_SESSION['login_attempts'])){
       $_SESSION['login_attempts'] = 1;
@@ -17,7 +19,5 @@
       $_SESSION['login_attempts']++;
     }
     header ('location: /login.php');
-
   }
-
 ?>

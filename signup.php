@@ -1,15 +1,16 @@
 <?php
   session_start();
 
+//error message for already existing username
   if (isset($_SESSION['username_error']) ) {
     echo "Username already exists";
-    
+    //error message for passwords not matching
   } else if (isset($_SESSION['password_match_error'])) {
     echo "Passwords do not match";
-    
+    //error message for passwords not meeting length requirements
   } else if (isset($_SESSION['password_length_error'])) {
     echo "Password must be at least 3 characters";
-    
+    //error message for passwords not meeting special character requirements
   } else if (isset($_SESSION['password_special_error'])) {
     echo "Password must contain only letters or numbers";
     
@@ -17,15 +18,6 @@
     echo " ";
   }
 
-  // if (isset($_SESSION['login_attempts'])) {
-  //   echo "Unsuccessful attempt: " . $_SESSION['login_attempts'];
-  // } else {
-  //   echo " ";
-  // }
-  // unset($_SESSION['username_error']);
-  // unset($_SESSION['password_match_error']);
-  // unset($_SESSION['password_length_error']);
-  // unset($_SESSION['password_special_error']);
 ?>
 
 <html>

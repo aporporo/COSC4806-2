@@ -1,10 +1,9 @@
 <?php
+
   require_once ('user.php');
   session_start();
   session_unset();
   
-
-
   $username = $_REQUEST['username'];
   $password = $_REQUEST['password'];
   $password2 = $_REQUEST['password2'];
@@ -32,6 +31,4 @@
     $user->create_user($username, $password);
     header ('location: /login.php');
   }
-
-
 ?>
