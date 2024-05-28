@@ -14,20 +14,22 @@
   if ($user->check_user_exists($username)) {
     $_SESSION['username_error'] = 1;
     header ('location: /signup.php');
+  //check passwords match
   } else if ($password != $password2) {
     $_SESSION['password_match_error'] = 1;
     header ('location: /signup.php');
+  //check password length
   } else if (strlen($password) < 3) {
     $_SESSION['password_length_error'] = 1;
     header ('location: /signup.php');
-  // } else if (!ctype_alnum($password)) {
+  //check password contains only letters and numbers
   } else if (!ctype_alnum($password)) {
     $_SESSION['password_special_error'] = 1;
     header ('location: /signup.php');
   }
+  //if all checks pass, create user
   else {
     $user->create_user($username, $password);
-    //echo "User created";
     header ('location: /login.php');
   }
 
